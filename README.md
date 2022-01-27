@@ -24,3 +24,4 @@ This helps to show background images in tiles.
 
 ## Expected result 
 All game tiles with Background image, title, subtitle will appear in screen. 
+<img width="905" alt="Screen Shot 2022-01-27 at 3 17 59 PM" src="https://user-images.githubusercontent.com/10766604/151459354-0ae0d144-53cc-4e08-9509-f3a9bcfd2426.png">
