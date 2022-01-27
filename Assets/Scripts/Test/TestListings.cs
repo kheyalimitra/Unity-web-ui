@@ -28,27 +28,20 @@ namespace Unity.Metacast.Demo
         }
         private string GetWebResult(string url)
         {
-            // Create a request for the URL. 		
-            WebRequest request = WebRequest.Create (url);
-            // If required by the server, set the credentials.
-            request.Credentials = CredentialCache.DefaultCredentials;
-            // Get the response.
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse ();
-            // Display the status.
-            Console.WriteLine (response.StatusDescription);
-            // Get the stream containing content returned by the server.
-            Stream dataStream = response.GetResponseStream ();
-            // Open the stream using a StreamReader for easy access.
-            StreamReader reader = new StreamReader (dataStream);
-            // Read the content.
-            string responseFromServer = reader.ReadToEnd ();
-            // Display the content.
-            
-            reader.Close ();
-            dataStream.Close ();
-            response.Close ();
-
-            return responseFromServer;
+            try {
+                WebRequest request = WebRequest.Create (url);
+                request.Credentials = CredentialCache.DefaultCredentials;
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse ();
+                Stream dataStream = response.GetResponseStream ();
+                StreamReader reader = new StreamReader (dataStream);
+                string responseFromServer = reader.ReadToEnd ();
+                reader.Close ();
+                dataStream.Close ();
+                response.Close ();
+                return responseFromServer;
+            } catch (Exception e) {
+                Debug.LogError("Exception", e);
+            }
         }
     }
 }
