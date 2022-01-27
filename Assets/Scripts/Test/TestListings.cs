@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
 using UnityEngine.Replay;
-using System;
 using System.IO;
 using System.Net;
 using System.Text;
+
 
 namespace Unity.Metacast.Demo
 {
@@ -25,9 +25,7 @@ namespace Unity.Metacast.Demo
             webResult = "{\"listings\":" + webResult + "}";
             //TODO Instead of a TextAsset pass JSON result from the web server.
             UIBrowser.instance.Init(webResult);
-            // UIBrowser.instance.Init(m_TestJson.text);
         }
-
         private string GetWebResult(string url)
         {
             // Create a request for the URL. 		

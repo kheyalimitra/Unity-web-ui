@@ -55,7 +55,7 @@ namespace UnityEngine.Replay
                 {
                     text.SetText(category.ToUpper());
                 }
-            }           
+            }            
             CreatePanels(listings);
         }
 
@@ -69,13 +69,12 @@ namespace UnityEngine.Replay
             {
                 var newPanelItem = Instantiate(m_PanelItem, m_PanelItem.transform.parent);
                 newPanelItem.SetData(listing);
-                Debug.Log(newPanelItem);
                 m_PanelItems.Add(newPanelItem);
             }
+
             Destroy(m_PanelItem.gameObject);
-            // Debug.Log("m_PanelItems.Count");
-            // Debug.Log(m_PanelItems.Count);
             SetPanelPositions();
+
             m_ContentRectTransform.sizeDelta = new Vector2(panelWidth * m_PanelItems.Count, m_ContentRectTransform.sizeDelta.y);
         }
 
@@ -87,7 +86,7 @@ namespace UnityEngine.Replay
             var newPos = Vector2Int.zero;
 
             for (var i = 0; i < m_PanelItems.Count; i++)
-            {   
+            {
                 m_PanelPositions.Add(newPos);
                 m_PanelItems[i].SetPosition(newPos);
                 newPos += Vector2Int.right * panelWidth;

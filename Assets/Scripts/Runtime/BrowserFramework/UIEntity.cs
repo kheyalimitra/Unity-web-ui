@@ -1,4 +1,5 @@
-
+using System.Collections.Generic;
+using UnityEngine.Networking;
 namespace UnityEngine.Replay
 {
     /// <summary>
@@ -24,6 +25,14 @@ namespace UnityEngine.Replay
             m_Images = GetComponentsInChildren<UIImage>();
         }
 
+        IEnumerator<UnityWebRequestAsyncOperation> GetTexture(Listing.ImageObject imageObject, UIImage image) 
+        {
+            UnityWebRequest www = UnityWebRequestTexture.GetTexture(imageObject.url);
+            yield return www.SendWebRequest();
+            var texture = DownloadHandlerTexture.GetContent(www);
+            image.SetImage(texture);
+        }
+
         /// <summary>
         ///     Sets the entity's content based on a Listing
         /// </summary>
@@ -31,17 +40,10 @@ namespace UnityEngine.Replay
         public virtual void SetData(Listing l)
         {
             m_Listing = l;
-            
-            foreach (var text in m_Texts) 
-            {
-                text.SetText(l.GetText(text.textType));
-
-            }
-
+            foreach (var text in m_Texts) text.SetText(l.GetText(text.textType));
             foreach (var image in m_Images)
             {
-                image.SetImage(l.GetImage(image.imageType));
-
+                StartCoroutine(GetTexture(l.images[0], image));
             }
         }
     }
