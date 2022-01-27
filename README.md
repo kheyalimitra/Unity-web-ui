@@ -13,7 +13,13 @@ This helps to show background images in tiles.
 - Download Unity Hub in your local
 - Download this project 
 - Open this project from Unity Hub
-- From the screen, hit play. 
+- In order to fetch records, we need https://github.com/kheyalimitra/game-listing-framework to run. 
+  - Go to https://github.com/kheyalimitra/game-listing-framework, clone the repo
+  - From terminal cd to the folder
+  - run `docker build -t react-app ./client` and `docker build -t api-server ./server`
+  - aftger that, run  `docker-compose up --remove-orphan`
+- Now all necesary services are running on port 5000 of your local machine. 
+- Come back to unity hub, From the screen, hit play. 
 
 
 ## Expected result 
