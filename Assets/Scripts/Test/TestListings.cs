@@ -40,7 +40,7 @@ namespace Unity.Metacast.Demo
                 response.Close ();
                 return responseFromServer;
             } catch (Exception e) {
-                Debug.LogError("Exception", e);
+                return "";
             }
         }
     }
